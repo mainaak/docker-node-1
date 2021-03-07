@@ -1,17 +1,9 @@
-FROM ubuntu
+FROM mainaak/node:latest
 
 LABEL maintainer "Mainaak Aanand <mainaakaanand@gmail.com>"
 
-RUN echo -e "\n\n========UPDATING========="
+COPY build build
 
-RUN apt-get update
+EXPOSE 5000
 
-RUN echo -e "\n\n==========INSTALLING NODE & NPM==========="
-
-RUN apt-get install nodejs -y
-
-RUN apt-get install npm -y
-
-RUN echo -e "\n\n=========INSTALLING SERVE=========="
-
-RUN npm install -g serve
+CMD serve -s /build
